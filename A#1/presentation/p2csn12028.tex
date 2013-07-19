@@ -1,0 +1,454 @@
+% This text is Free and open Open Source.
+% It's a part of presentation made by myself.
+% It may be used only for academic purpose
+% May, 2012
+% Author: Seshagiri Prabhu
+% Amrita Vishwa Vidyapeethm 
+% seshagiriprabhu@gmail.com
+% www.seshagiriprabhu.wordpress.com
+
+\documentclass[12pt]{beamer}
+\usetheme{Oxygen}
+\usepackage{thumbpdf}
+\usepackage{wasysym}
+\usepackage{ucs}
+\usepackage[utf8]{inputenc}
+\usepackage{pgf,pgfarrows,pgfnodes,pgfautomata,pgfheaps,pgfshade}
+\usepackage{verbatim}
+\usepackage{listings}
+\usepackage{courier}
+\usepackage{caption}
+\usepackage{verbatim} 
+\usepackage{upquote}
+\usepackage{graphics}
+\usepackage{latexsym}
+\usepackage{fixltx2e}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{amssymb}
+\usepackage{ragged2e}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{pgf}
+\usepackage{fmtcount}% http://ctan.org/pkg/fmtcount
+\usepackage{algorithm, algpseudocode}
+\usepackage{caption}
+\captionsetup[algorithm]{font=scriptsize}
+\usepackage{etoolbox}
+\usepackage{minted}
+\makeatother
+\newcommand\Colorhref[3][cyan]{\href{#2}{\small\color{#1}#3}}
+\newcommand\Fontvi{\fontsize{5}{6}\selectfont}
+%\renewcommand\tinyv{\@setfontsize\tinyv{4pt}{6}}
+%\renewcommand\tiny{\@setfontsize\tiny{4pt}{6}}
+\usepackage{xcolor}
+\def\SPSB#1#2{\rlap{\textsuperscript{\textcolor{red}{#1}}}\SB{#2}}
+\def\SP#1{\textsuperscript{\textcolor{red}{#1}}}
+\def\SB#1{\textsubscript{\textcolor{blue}{#1}}}
+
+\pdfinfo
+{
+  /Title       (SN 707 Software Protection)
+  /Creator     (Seshagiri Prabhu N)
+  /Author      (TeX)
+}
+\title{SN 707 Software Protection}
+\subtitle{Assignment 1}
+\author{Seshagiri Prabhu N}
+\institute[Amrita Vishwa Vidyapeetham] % (optional)
+{
+  \begin{center}
+    \tiny \textbf{AM.EN.P2CSN12028} \\ 
+    M.Tech, Cyber Security and Networks\\
+  	Amrita School of Engineering,
+	Amritapuri Campus
+  \end{center}  
+}
+
+\begin{document}
+\frame{\titlepage}
+
+\begin{frame}[fragile]{Problem}
+	\begin{minted}[C]
+		#include <stdio.h>
+		#define _ -F<00||--F-OO--;
+		int F=00,OO=00;main(){F_OO();printf("%1.3f\n",4.*-F/OO/OO);}F_OO()
+		{
+		            _-_-_-_
+	    	   _-_-_-_-_-_-_-_-_
+		   	 _-_-_-_-_-_-_-_-_-_-_-_
+		  _-_-_-_-_-_-_-_-_-_-_-_-_-_
+		 _-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+		 _-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+		_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+		_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+		_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+		_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+		 _-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+		 _-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+		  _-_-_-_-_-_-_-_-_-_-_-_-_-_
+		    _-_-_-_-_-_-_-_-_-_-_-_
+		        _-_-_-_-_-_-_-_
+		            _-_-_-_
+		}
+	\end{minted} 	
+\end{frame}
+
+\section*{}
+\begin{frame}
+  \frametitle{Outline}
+  \tableofcontents[section=1,hidesubsections]
+\end{frame}
+
+\newcommand{\icon}[1]{\pgfimage[height=1em]{#1}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%% Content starts here %%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Introduction}
+
+\begin{frame}{timebomb}
+  \frametitle{Introduction}
+	\begin{enumerate}
+		\justifying
+		\item Relevance of \textbf{Modulo arithmetic} in public key crypto system
+		\item \textbf{Euclid}'s algorithm, is an efficient method for computing the greatest common divisor (GCD) of two integers
+		\item The use of \textbf{E}xtended \textbf{E}uclidean \textbf{A}lgorithm (\textbf{EEA}) to evaluate the multiplicative inverse
+	\end{enumerate}
+\end{frame}
+
+
+\section{Contribution of this paper}
+\begin{frame}
+\frametitle{Contributions of papers}
+	\begin{block}{"Contributions" of the research paper 1}
+	\justifying
+		Computerized algorithm (the first, efficient and cost effective) for the determination of the multiplicative inverse of a polynomial over GF(2\SP{m}) using simple bit wise shift and XOR operations.
+	\end{block}
+	\begin{block}{Contributions of the research paper 2}
+		\justifying
+		An algorithm for inversion in $GF(2^{m})$ suitable for implementation using a polynomial multiply instruction on $GF(2)$.
+	\end{block}
+\end{frame}
+
+\section{Problem Description}
+\begin{frame}
+\frametitle{Problem Description}
+\framesubtitle {Euclid Algorithm}
+	\begin{block}{Euclid Algorithm}
+		\scriptsize
+		Euclid’s algorithm for polynomial calculates the greatest common divisor (GCD) polynomial of two polynomials
+	\end{block}
+	
+	\begin{block}{EA description}
+		\tiny
+		The Euclidean algorithm proceeds in a series of steps such that the output of each step is used as an input for the next one.\\
+		$r_{k-2} = q_{k} \times r_{k-1} + r_{k}$\\
+		Where  $deg(r_{k}) < deg (r_{k-1})$ and $\forall k \geq 0$. \\
+		If $r_{k-2} < r_{k-1}$ then we $r_{k-2} \rightleftharpoons r_{k-1}$
+	\end{block}
+	
+	\begin{block}{Example: a = 1071 and b = 462}
+		\begin{center}
+		\tiny
+			\begin{tabular}{| c | c | c | c |}
+				\hline
+				k & Equation & $q_{k}$  & $r_{k}$ \\ \hline
+				0 & $1071  = q_{0}\times462 + r_{0}$ & 2 & 147 \\ \hline
+				1 & $462  = q_{1}\times147 + r_{1}$ & 3 & 21 \\ \hline
+				2 & $147  = q_{2}\times21 + r_{2}$ & 7 & 0  \\ \hline
+			\end{tabular}
+		\end{center}
+	\end{block}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Problem Description}
+	\framesubtitle{Extended Euclidean Algorithm}
+	\begin{block}{EEA}
+		Let \textcolor{red}{$A$} and \textcolor{red}{$B$} be polynomials.\\
+		EEA gives \textcolor{red}{$U$} and \textcolor{red}{$V$} such that\\
+		$\gcd{(A, B)} = U \times A + V \times B$\\
+	\end{block}
+		\begin{block}{Polynomial representation}
+	  	The finite field is a representative of a polynomial function with respect to one variable x: \\
+	  	$GF(2\SP{p}) = c_{p-1}x\SP{p-1} + c_{p-2}x\SP{p-2} + \dots + c_{2}x\SP{2} + c_{1}x\SP{1} + c_{0}$ \\
+	  	$\mid c_{i} \in F_{2} =$ \{0,1\}
+	\end{block}
+	
+\end{frame}
+\begin{frame}
+\frametitle{Problem Description}
+	\begin{block}{Modular multiplicative inverse}
+	\justify
+		If \textcolor{red}{$A$} and \textcolor{red}{$B$} are irreducible, then $\gcd(A, B)$ is \textcolor{red}{$1$}.\\
+		The modular multiplicative inverse of  modulo b is U \\ $\mid$ \hspace{2mm} $A^{-1} \equiv U\hspace{2mm} [mod\hspace{2mm}B]$
+	\end{block}
+\end{frame}
+
+\begin{frame}
+\frametitle{Example}
+\scriptsize
+	\begin{block}{Problem}
+		We have $G = x\SP{8} + x\SP{4} + x\SP{3} + x + 1$ \\
+		Let $ P = x^{6} + x^{4} + x + 1$ and $Q = x^7 + x^6 + x^3 + x$\\
+		$P \times Q$ = $x^{13} + x^{12} + x^{11} + x^{10} + x^{9} + x^{8} +  4 * x^{7} + x^{6} + x^{5} + x^{4}  + x^{3} + x^{2} + x$\\
+		$P \times Q$ = $x^{13} + x^{12} + x^{11} + x^{10} + x^{9} + x^{8} + x^{6} + x^{5} + x^{4}  + x^{3} + x^{2} + x$\\
+	\end{block}		
+	\begin{block}{Computations}
+	\begin{tabular}{|c|c|}
+			\hline
+			$P \times Q + (x^{5})\times G$ & $x^{12} + x^{11} + x^{10} + x^{4} + x^{3} + x$ \\ \hline
+			$P \times Q + (x^{5} + x^{4})\times G$ & $x^{11} + x^{10} + x^{3} + x$ \\ \hline
+			$P \times Q + (x^{5} + x^{4} + x^3)\times G$ & $x^{10} + x$ \\		\hline
+			$P \times Q + (x^{5} + x^{4} + x^{3} + x^{2})\times G$ &  $x$ \\		\hline	
+			$P \times Q + (x^{5} + x^{4} + x^{3} + x^{2} + 1)\times G$ &  $1$ \\	\hline
+	\end{tabular}					
+	\end{block}
+
+	\begin{block}{Result}
+		The M.I of PQ on GF(2\SP{8}) is x\SP{5} + x\SP{4} + x\SP{3} + x\SP{2} + 1		
+	\end{block}
+\end{frame}
+
+\section{Traditional Algorithm}
+\begin{frame}[fragile]
+\frametitle{Traditional Algorithm}
+\begin{algorithm}[H]
+		\label{euclid}
+		\begin{algorithmic}
+			\scriptsize
+			\Procedure{Extended Euclid's Algorithm}{$A_{3}[\hspace{1mm}]$, $B_{3}[\hspace{1mm}]$}
+				\State $R_{-1}(x) := B(x); U_{-1}(x) := 0; W_{-1}(x) := 1;$
+				\State $R_{0}(x) := A(x); U_{0}(x) := 1; W_{0}(x) := 0;$
+				\State $j := 0;$ 
+				\While {($R_{j}(x) \neq 0$)} 
+					\State $j := j + 1$;
+					\State $Q_{j}(x) = R_{j-2}(x) \div R_{j-1}(x);$
+					\State $R_{j}(x) = R_{j-2}(x)  - Q_{j}(x) \times R_{j-1}(x);$
+					\State $U_{j}(x) = U_{j-2}(x)  - Q_{j}(x) \times U_{j-1}(x);$
+					\State $W_{j}(x) = W_{j-2}(x)  - Q_{j}(x) \times W_{j-1}(x);$					
+				\EndWhile
+			\EndProcedure
+		\end{algorithmic}
+		\caption{Extended Euclidean Algorithm}
+	\end{algorithm}
+\end{frame}
+
+\begin{frame}
+\frametitle{Example} 
+\tiny
+Let's apply EEA to B = 203  and A = 80
+	\begin{center}
+	\tiny
+		\begin{tabular}{| l | p{4cm} | c | r | r | r |}
+			\hline
+			j & Operation & $R_{j}$ & $U_{j}$ & $W_{j}$ & $Q_{j}$ \\ \hline
+			-1 & $R_{-1}(x) := B(x); \newline U_{-1}(x) := 0; W_{-1}(x) := 1$ & $11001011$ & 0 & 1 & - \\ \hline 
+			0 & $R_{0}(x) := A(x); \newline U_{0}(x) := 1;  W_{0}(x) := 0;$ & $01010000$ & 1 & 0 & -\\ \hline
+			1 & $Q_{1}(x) := R_{-1}(x) \div R_{0}(x)$ & - & - &  - & $0011$\\ 
+			  & $R_{1}(x) := R_{-1}(x) - Q_{1}(x) \times R_{0}(x)$ & $00111011$& - & - & - \\
+			  & $U_{1}(x) := U_{-1}(x) - Q_{1}(x) \times U_{0}(x)$ & - & $0011$ & - & -\\
+			  & $W_{1}(x) := W_{-1}(x) - Q_{1}(x) \times W_{0}(x)$ & - & - & 1 & - \\ \hline
+			2 & $Q_{2}(x) := R_{0}(x) \div R_{1}(x)$ & - & - &  - & $0011$\\ 
+			  & $R_{2}(x) := R_{0}(x) - Q_{2}(x) \times R_{1}(x)$ & $00011101$& - & - & - \\
+			  & $U_{2}(x) := U_{0}(x) - Q_{2}(x) \times U_{1}(x)$ & - & $100$ & - & -\\
+			  & $W_{2}(x) := W_{0}(x) - Q_{2}(x) \times W_{1}(x)$ & - & - & $11$ & - \\ \hline			
+ 			3 & $Q_{3}(x) := R_{1}(x) \div R_{2}(x)$ & - & - &  - & $0010$\\ 
+			  & $R_{3}(x) := R_{1}(x) - Q_{3}(x) \times R_{2}(x)$ & $1$& - & - & - \\
+			  & $U_{3}(x) := U_{1}(x) - Q_{3}(x) \times U_{2}(x)$ & - & $\underline{1011}$ & - & -\\
+			  & $W_{3}(x) := W_{1}(x) - Q_{3}(x) \times W_{2}(x)$ & - & - & $111$ & - \\ \hline	
+		\end{tabular}
+	\end{center}
+
+\end{frame}
+
+\section{Proposed Algorithms}
+\begin{frame}[fragile]
+	\frametitle{Proposed Algorithms}
+	\framesubtitle{Research Paper 1}
+	\begin{algorithm}[H]
+		%\algsetup{linenosize=\tiny}
+	  	\tiny
+		\label{euclid}
+		\begin{algorithmic}
+			\Procedure{Multiplicative Inverse}{$A_{3}[\hspace{1mm}]$, $B_{3}[\hspace{1mm}]$}
+				\State $C\SB{1} = A\SB{2} = B\SB{2} = 0$;
+				\While {($B\SB{3} \textgreater 1$)} \Comment{Step 1 do}
+					\State $Q = 0$;
+					\State $Temp = B\SB{3}$;
+					\While {($A\SB{}3 > Temp \parallel BitSize(C) \geq BitSize(Temp)$)}
+						\State $Q\SB{1} = 1$;
+						\While {($A\SB{3MSB} == B\SB{3MSB}$)}
+							\State $B\SB{3} = B\SB{3} << LinearLeftShift$ ;
+							\State $Q\SB{1} = Q\SB{1} * 2$;
+						\EndWhile
+							\State $Q = Q + Q\SB{1}$;
+							\State $A\SB{3} = A\SB{3}[\hspace{1mm}] \oplus B\SB{3}[\hspace{1mm}]$;
+							\State $B\SB{3} = Temp$;
+					\EndWhile
+					\State $A\SB{2} = B\SB{2}; B\SB{3} = A\SB{3}; A\SB{3} = Temp$;
+					\State $N = BitSize(Q)$; \Comment {Binary Bit Size of Q}
+					\State $Temp = B\SB{2}; C\SB{2}=0;$\Comment {Step2}	
+					\While{($N\geq1$)}
+						\State $C\SB{2} = 0\SB{d}$;
+						\If {($Q\SB{N}==1$)}\Comment {Testing if Nth bit of Q is 1}
+							\State $C\SB{1}=B\SB{2}<< N-1$; \Comment{Linear left shift by N-1 times}
+							\State $C\SB{2} = C\SB{2}\oplus C\SB{1}$;
+						\EndIf
+						\State $N--$;
+					\EndWhile
+					\State $B\SB{2} = C\SB{2}; A\SB{2} = Temp; B\SB{2}=B\SB{2} \oplus A\SB{2};$ \Comment  {Multiplicative Inverse}
+				\EndWhile
+			\EndProcedure
+		\end{algorithmic}
+%		\caption{\tiny {Euclidean Algorithm}}
+	\end{algorithm}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Example}
+	\framesubtitle{Let's apply EEA to A = 283 and B = 42}
+	\tiny 
+	\begin{center}
+		\begin{tabular}{| l | c | c | r | r |}
+			\hline
+			i & Operation & Binary & V & U \\ \hline
+			0 & $A$ & $100011011$ & 1 & 0 \\ \hline 
+			1 & $B$ & $000101010$ & 0 & 1 \\ \hline
+			  & $3<<B$ & $101010000$ & 0 & 1000 \\ 
+			2 & $A \leftarrow A \oplus (3<<B)$ & $001001011$ & 1 & 1000 \\ \hline
+			 & $1<<B$ & $001010100$ & 0 & 0010 \\
+			3 & $A \leftarrow A \oplus (1<<B)$ & $000011111$ & 1 & 1010 \\ \hline
+			 & $A<B \hspace{1mm} A \rightleftharpoons B$ & & & \\
+			 & $A$ & $000101010$ & 00 & 00001 \\
+			 & $B$ & $000011111$ & 01 & 01010 \\
+			 & $1<<B$ & $000111110$ & 10 & 10100 \\
+			4 & $A \leftarrow A \oplus (1<<B)$ & $000010100$ & 10 & 10101 \\ \hline
+			 & $A<B \hspace{1mm} A \rightleftharpoons B$ & & & \\
+			 & $A$ & $000011111$ & 01 & 01010 \\
+			 & $B$ & $000010100$ & 10 & 10101 \\
+			5 & $A \leftarrow A \oplus B$ & $000001011$ & 11 & 11111 \\ \hline
+			 & $A<B \hspace{1mm} A \rightleftharpoons B$ & & & \\
+			 & $A$ & $000010100$ & 010 & 010101 \\
+			 & $B$ & $000001011$ & 011 & 011111 \\
+			 & $1<<B$ & $000010110$ & 110 & 111110 \\
+			6 & $A \leftarrow A \oplus (1<<B)$ & $000000010$ & 100 &  101011 \\ \hline	
+			 & $A<B \hspace{1mm} A \rightleftharpoons B$ & & & \\
+			 & $A$ & $000001011$ & 00011 & 00011111 \\
+			 & $B$ & $000000010$ & 00100 & 00101011 \\
+			 & $2<<B)$ & $000001000$ & 10000 & 10101100 \\
+			7 & $A \leftarrow A \oplus (2<<B)$ & $000000011$ & 10011 & 10110011 \\ \hline
+			8 & $A \leftarrow A \oplus B$ & $000000001$ & 10111 & $\underline{10011000}$ \\ \hline		 
+		\end{tabular}
+	\end{center}
+\end{frame}
+
+\begin{frame}
+\frametitle{Proposed Algorithms}
+\framesubtitle{Research Paper 2}
+\begin{algorithm}[H]
+\tiny
+\label{euclid}
+	\begin{algorithmic}
+		\Procedure{Extended Euclid's Algorithm}{$A_{3}[\hspace{1mm}]$, $B_{3}[\hspace{1mm}]$}
+			\State $S(x) := G(x); V(x) := 0;$
+			\State $R(x) := A(x); U(x) := 1;$
+			\While {$(deg(R(x)\not=0)$} 
+				\State $\delta := deg(S(x)) - deg(R(x));$
+				\If {$\delta < 0$}
+					\State $S(x)\rightleftharpoons R(x)$
+					\State $V(x) \rightleftharpoons U(x)$
+					\State $\delta := -\delta;$				
+				\EndIf
+				\State $S(x) := S(x) - x^{\delta} \times R(x);$
+				\State $V(x) := V(x) - x^{\delta} \times U(x);$
+			\EndWhile
+		\EndProcedure
+	\end{algorithmic}
+	\caption{ Algorithm for Inversion in $GF(2^{m})$ Based on EEA}
+\end{algorithm}
+\scriptsize
+Output $U(x)$ as the result\\
+$(U(x) = A^{-1}(x))$
+\end{frame}
+
+\begin{frame}
+\frametitle{Example}
+\framesubtitle {$G(2^{7}) = x^{7}+x^{6}+x^{3}+x+1, A(x) = x^{6}+x^{4}$}
+\tiny
+	\begin{center}
+	\tiny
+		\begin{tabular}{| p{3cm} | c | r | r | r | r |}
+			\hline
+			Operation	 & $R(x)$ & $S(x)$ & $U(x)$ & $V(X)$ & $\delta$ \\ \hline
+			$S(x) := G(x); V(x) :=0; \newline R(x) := A(x); U(x) = 1;$ & $1010000$ & $11001011$ & 1 & 0 & \\ \hline 
+			$\delta := deg(S(x)) - deg(R(x)); \newline S(x) := S(x) - x^{\delta} \times R(x);\newline V(x) := V(x) - x^{\delta} \times U(x);$ & $1010000$ & $1101011$ & 1 & 10 & 1\\ \hline 
+			$\delta := deg(S(x)) - deg(R(x)); \newline  S(x) := S(x) - x^{\delta} \times R(x);\newline V(x) := V(x) - x^{\delta} \times U(x);$ & $1010000$ & $111011$ & 1 & 11 & 0\\ \hline
+			$\delta := deg(S(x)) - deg(R(x)); \newline S(x) \rightleftharpoons R(x); \newline V(x) \rightleftharpoons U(x));  \delta := -\delta; \newline S(x) := S(x) - x^{\delta} \times R(x);\newline V(x) := V(x) - x^{\delta} \times U(x);$& $111011$ & $100110$ & 11 & 111 & $1$\\ \hline
+			$\delta := deg(S(x)) - deg(R(x)); \newline S(x) := S(x) - x^{\delta} \times R(x);\newline V(x) := V(x) - x^{\delta} \times U(x);$ & $111011$ & $11101$ & 1 & 100 & 0\\ \hline 
+			$\delta := deg(S(x)) - deg(R(x)); \newline S(x) \rightleftharpoons R(x); \newline V(x) \rightleftharpoons U(x)); \delta := -\delta; \newline S(x) := S(x) - x^{\delta} \times R(x);\newline V(x) := V(x) - x^{\delta} \times U(x);$& $11101$ & $1$ & 111 & 1011 & $1$\\ \hline			
+			$\delta := deg(S(x)) - deg(R(x)); \newline S(x) \rightleftharpoons R(x); \newline V(x) \rightleftharpoons U(x)); \delta := -\delta; \newline S(x) := S(x) - x^{\delta} \times R(x);\newline V(x) := V(x) - x^{\delta} \times U(x);$& $1$ & $1101$ & $\underline{1011}$ & 1111011 & $4$\\ \hline			
+		\end{tabular}
+	\end{center}
+\end{frame}
+
+\section{Conclusion}
+\begin{frame}
+\frametitle{Conclusion}
+	\begin{enumerate}
+		\item The $algorithm^{[1]}$ is the pseudo-code of the $algorithm^{[2]}$.
+	   	\item The $Algorithm^{[1]}$ is badly written such that it requires reverse engineering to understand the algorithm.
+	   	\item $Algorithm^{[2]}$ is easy to understand and implement.
+	   	\item $Algorithm^{[1]}$ doesn't store $V$, but it caches a lot of temporary variables.
+	   	\item $Paper^{[1]}$ (published in 2009) claims that it is a pioneering work and the results could not be compared with that of any previous work.
+	\end{enumerate}
+\end{frame}
+
+\begin{frame}
+\frametitle{Future works}
+  \begin{block}{Possible future works}
+  	\begin{enumerate}
+  		\item Comparative study with the latest efficient EEAs
+  		\item Further optimize the EEA
+  		\item Implementation in hardware for real time applications (VLSI algo)
+  	\end{enumerate}
+  \end{block}
+\end{frame}
+
+\begin{frame}
+\frametitle {Coding!}
+	\begin{block}{Implemented}
+		\begin{enumerate}
+			\item Binary Vectors
+			\item Boolean function
+			\item Walsh Transform
+			\item Fast Walsh Transform
+			\item Algebraic Normal form (ANF)
+		\end{enumerate}
+	\end{block}
+
+	\begin{block}{Source code}
+	The source code is available here: \Colorhref{https://github.com/seshagiriprabhu/case-study-1}		 {https://github.com/seshagiriprabhu/case-study-1}
+
+	\end{block}
+\end{frame}
+
+\frame{
+  \vspace{2cm}
+  {\huge Questions ?}
+  \vspace{3cm}
+  \begin{flushright}
+	Seshagiri Prabhu \\
+    \structure{\footnotesize{seshagiriprabhu@gmail.com}}
+  \end{flushright}
+}
+
+\begin{frame}
+\frametitle{References}
+References: \newline
+		[1] \Colorhref{http://ijns.femto.com.tw/contents/ijns-v10-n2/ijns-2010-v10-n2-p107-113.pdf}{http://ijns.femto.com.tw/contents/ijns-v10-n2/ijns-2010-v10-n2-p107-113.pdf} \newline
+		[2] \Colorhref{http://www2.lirmm.fr/arith18/papers/kobayashi-AlgorithmInversionUsingPolynomialMultiplyInstruction.pdf}{http://www2.lirmm.fr/arith18/papers/kobayashi-AlgorithmInversionUsingPolynomialMultiplyInstruction.pdf}
+\end{frame}
+\end{document}
