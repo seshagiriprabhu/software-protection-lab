@@ -1,4 +1,7 @@
 software-protection-lab
 =======================
+This repository contains the files related to software protection course.
 
-Works related to my master's degree course - software protection
+##TODO##
+- [x] Assignment 1
+- [ ] Assignment 2
