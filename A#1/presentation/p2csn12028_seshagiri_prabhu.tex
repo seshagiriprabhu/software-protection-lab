@@ -1,0 +1,349 @@
+% This text is Free and open Open Source.
+% It's a part of presentation made by myself.
+% It may be used only for academic purpose
+% May, 2012
+% Author: Seshagiri Prabhu
+% Amrita Vishwa Vidyapeethm 
+% seshagiriprabhu@gmail.com
+% www.seshagiriprabhu.wordpress.com
+
+\documentclass[12pt]{beamer}
+\usetheme{Oxygen}
+\usepackage{thumbpdf}
+\usepackage{wasysym}
+\usepackage{ucs}
+\usepackage[utf8]{inputenc}
+\usepackage{pgf,pgfarrows,pgfnodes,pgfautomata,pgfheaps,pgfshade}
+\usepackage{verbatim}
+\usepackage{listings}
+\usepackage{courier}
+\usepackage{caption}
+\usepackage{verbatim} 
+\usepackage{upquote}
+\usepackage{graphics}
+\usepackage{latexsym}
+\usepackage{fixltx2e}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{amssymb}
+\usepackage{ragged2e}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{framed,lipsum}
+\usepackage{pgf}
+\usepackage{fmtcount}% http://ctan.org/pkg/fmtcount
+\usepackage{algorithm, algpseudocode}
+\usepackage{caption}
+\captionsetup[algorithm]{font=scriptsize}
+\usepackage{etoolbox}
+\makeatother
+\newcommand\Colorhref[3][cyan]{\href{#2}{\small\color{#1}#3}}
+\newcommand\Fontvi{\fontsize{5}{6}\selectfont}
+%\renewcommand\tinyv{\@setfontsize\tinyv{4pt}{6}}
+%\renewcommand\tiny{\@setfontsize\tiny{4pt}{6}}
+\usepackage{xcolor}
+
+\def\SPSB#1#2{\rlap{\textsuperscript{\textcolor{red}{#1}}}\SB{#2}}
+\def\SP#1{\textsuperscript{\textcolor{red}{#1}}}
+\def\SB#1{\textsubscript{\textcolor{blue}{#1}}}
+
+\usepackage{listings}
+\usepackage{color}
+
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+\lstset{
+ breaklines=true, commentstyle=\color{mygreen}, stepnumber=1, tabsize=2, stringstyle=\color{mymauve}, numberstyle=\tiny\color{mygray}, rulecolor=\color{black}, morekeywords={make,mkdir,gcc, all, clean, F, OO}, basicstyle=\tiny\ttfamily,keywordstyle=\color{blue}, emph={CC, CFLAG, EXECS, PROG, OBJS, OBJECTS, PHONY}, emphstyle=\color{red}, emph={[2]\#using,\#define,\#ifdef,\#endif}, emphstyle={[2]\color{blue}}, stringstyle=\color{red}
+}
+\pdfinfo
+{
+  /Title       (SN 707 Software Protection)
+  /Creator     (Seshagiri Prabhu N)
+  /Author      (TeX)
+}
+\title{SN 707 Software Protection}
+\subtitle{Assignment 1}
+\author{Seshagiri Prabhu N}
+\institute[Amrita Vishwa Vidyapeetham] % (optional)
+{
+  \begin{center}
+    \tiny \textbf{AM.EN.P2CSN12028} \\ 
+    M.Tech, Cyber Security and Networks\\
+  	Amrita School of Engineering,
+	Amritapuri Campus
+  \end{center}  
+}
+
+\begin{document}
+\frame{\titlepage}
+
+
+\begin{frame}
+  \frametitle{Outline}
+  \tableofcontents[section=1,hidesubsections]
+\end{frame}
+
+\newcommand{\icon}[1]{\pgfimage[height=1em]{#1}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%% Content starts here %%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Problem}
+\begin{frame}
+	\frametitle{Problem}
+	\framesubtitle{Given a code}
+	\begin{figure}[htp] \centering{
+		\includegraphics[scale=0.35]{code.png}}
+	\end{figure}
+\end{frame}
+
+
+\section{Problem description}
+\begin{frame}[fragile]
+	\frametitle{Problem Description}
+	\framesubtitle{Compile the program}
+	\tiny
+	\begin{lstlisting}[language=make, breaklines=true, commentstyle=\color{mygreen}, frame=shadowbox, rulecolor=\color{black}, numbers=left,  numbersep=2pt, numberstyle=\tiny\color{mygray}]
+	# Make file
+	CC=gcc
+	CFLAG= -c -Wall
+
+	EXECS := circle
+	PROG  := circle.c
+	OBJS  := $(addprefix OBJECTS/, $(addsuffix .o, $(EXECS)))
+
+	all     :$(EXECS)
+
+	OBJECTS :
+    		mkdir -p $@
+
+	$(OBJS) :| OBJECTS
+
+	$(EXECS):$(OBJS)
+            $(CC) $^ -o $@
+
+	OBJECTS/circle.o :$(PROG)
+                $(CC) $(CFLAG) $^ -o $@
+
+	clean   :
+    		rm -rf $(EXECS) OBJECTS
+
+	.PHONY  : clean all
+	\end{lstlisting}			
+\end{frame}
+\begin{frame}[fragile]
+	\frametitle{Problem Description}
+	\framesubtitle{Compile and run the program}
+	\tiny
+	\begin{block}{Compile the program}
+		\begin{lstlisting}[language=bash]
+seshagiri@ACCS:~$ make
+mkdir -p OBJECTS
+gcc -c -Wall circle.c -o OBJECTS/circle.o
+gcc OBJECTS/circle.o -o circle
+    	\end{lstlisting}
+    \end{block}
+    
+	\begin{block}{Execute the binary file - $circle$}
+		\begin{lstlisting}[language=bash]
+seshagiri@ACCS:~$ ./circle
+0.250
+		\end{lstlisting}
+	\end{block}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Problem Description}
+	\framesubtitle{What can we understand after executing the binary file?}
+	\begin{center}
+		\small What can we understand after executing the binary file?
+		\small{$<burp>$} \huge {NOTHING!} \small {$</burp>$}
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Problem Description}
+	\framesubtitle{What should we do next?}
+	\begin{center}
+		\small {What should we do next?} \\
+		\large Inspect the source code
+	\end{center}
+	\includegraphics[scale=.4]{images/environmentalchimney-inspect-the-chimney-300x248.jpg} 
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Problem Description}
+	\framesubtitle{Intended the code properly for better understanding}
+	\begin{lstlisting}[language=C, breaklines=true, commentstyle=\color{mygreen}, rulecolor=\color{black}, numbers=left,  numbersep=2pt, numberstyle=\tiny\color{mygray}] ]
+#include <stdio.h>
+#define _ -F<00||--F-OO--;
+
+int F=00,OO=00;
+
+main() {
+        F_OO();
+        printf("%1.3f\n", 4.*-F/OO/OO);
+}
+
+F_OO() {
+            _-_-_-_
+       _-_-_-_-_-_-_-_-_
+    _-_-_-_-_-_-_-_-_-_-_-_
+  _-_-_-_-_-_-_-_-_-_-_-_-_-_
+ _-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+ _-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+ _-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+ _-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+  _-_-_-_-_-_-_-_-_-_-_-_-_-_
+    _-_-_-_-_-_-_-_-_-_-_-_
+        _-_-_-_-_-_-_-_
+            _-_-_-_
+}
+	\end{lstlisting}
+
+\end{frame}
+
+\section{Problem Dissection}
+\begin{frame}[fragile]
+	\frametitle {Problem Dissection}
+	\framesubtitle {Macro... Macro..}
+	\begin{block}{Unnoticed macro $\_$ }
+		\begin{lstlisting}[language=C]
+			#define _ -F<00||--F-OO--;
+		\end{lstlisting}	
+	\end{block}
+	\begin{block}{What macro does?}
+		\begin{itemize}
+			\item Replaces '\texttt{\_}' with {\tiny '\texttt{-F<00||-{}-F-OO-{}-;}'}
+			\item for eg: {\tiny '\texttt{\_-\_-\_}'} becomes {\tiny '\texttt{-F<00||-{}-F-OO-{}-;- -F<00||-{}-F-OO-{}-;- -F<00||-{}-F-OO-{}-;}'}
+			\item One of the important property of \texttt{||} operator is that if the first condition is \textcolor{red}{true}, it will \textcolor{red}{NOT} check for the second condition unlike \texttt{\&\&} operator.
+		\end{itemize}
+	\end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Problem Dissection}
+	\framesubtitle{Values of variables inside \texttt{F\_OO()}}
+	\begin{block}{Values of \texttt{F} and \texttt{OO}}
+		\begin{itemize}
+			\item \texttt{F} and \texttt{OO} are initially set as $zero$. 
+			\item In the first line of \texttt{F\_OO} function, \texttt{-F<00} becomes \textcolor{red}{false} hence checks for the second condition.
+			\item \texttt{-{}-F} becomes -1 and \texttt{OO-{}-} remains as 0.
+			\item After the execution of the first line, value of F becomes -1 and OO becomes -1.
+		\end{itemize}				
+	\end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Problem Dissection}
+	\framesubtitle{Values of \texttt{F} and \texttt{OO} inside \texttt{F\_OO()}}
+	\begin{itemize}
+	\item  {\tiny \textbf{Line 1:} texttt{-0<0 (\textcolor{red}{false}) || (-1)-(0--) (\textcolor{green}{executed}); -1<0 (\textcolor{green}{true}) || (-2)-(-1)(\textcolor{red}{not executed}); -1 < 0 (\textcolor{green}{true}) || (-3)-(-2)(\textcolor{red}{not executed})}}. {\tiny \texttt{F = -1, OO = -1}}
+	\item {\tiny \textbf{Line 2:} \texttt{1<0 (\textcolor{red}{false}) || (-2)-(1--) (\textcolor{green}{executed}); -2<0 (\textcolor{green}{true}) || (-3)-(-2)(\textcolor{red}{not executed}); -3 < 0 (\textcolor{green}{true}) || (-4)-(-3)(\textcolor{red}{not executed}) -4<0 (\textcolor{green}{true}) || (-5)-(-4)(\textcolor{red}{not executed}); -5 < 0 (\textcolor{green}{true}) || (-6)-(-5)(\textcolor{red}{not executed})}}. {\tiny \texttt{F = -2, OO = -2}}
+	\\.
+	\\.
+	\\.
+	\item {\tiny \textbf{Line 16:} \texttt{F = -16, OO = -16} }
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Problem Dissection}
+	\framesubtitle{Lets go back to \texttt{main()} where \texttt{F\_OO()} was called}
+	\begin{block}{Inside \texttt{main()}}
+		\begin{lstlisting}[language=C]
+			printf("%1.3f\n",4.*-F/OO/OO);
+		\end{lstlisting}
+		This line calculates the value 0.250 
+	\end{block}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Problem Dissection}
+	\framesubtitle{What was the learning from this program?}
+	\begin{center}
+		\small {What was the learning by inspecting the code} \\
+		\huge {NIL}
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Problem Dissection}
+	\framesubtitle{What should be done next?}
+	\begin{center}
+		\small {What should be done next?} \\
+		\small {Lets} \\
+		\includegraphics[scale=0.05]{images/google-logo.jpg} 
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Problem Dissection}
+	\framesubtitle{What should be done next?}
+	\begin{center}
+		\small {Bingo! Wiki rocks} \\
+		\includegraphics[scale=0.3]{images/220px-Wikipedia-logo-v2.png}\\
+		{\tiny \url{http://en.wikipedia.org/wiki/International_Obfuscated_C_Code_Contest\#Examples}}
+		{\tiny The same example is mentioned in the above mentioned link and it says that the program works by calculating its own area and diameter, and then doing a division to approximate pi!!} \\
+		{\small They call it as an Obfuscated C code}
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Problem Dissection}
+	\framesubtitle{How does it calculates the value of $\Pi$?}
+	\begin{block}{Lets do reverse engineering!}
+		Using the hint in Wiki, we found that program works by calculating its own area and diameter. So we need to make the $\Pi$, Area, radius/diameter looks like \texttt{4.*-F/OO/OO}. \\ So lets do reverse Engineering!
+	\end{block}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Problem Dissection}
+	\framesubtitle{Calculating the value of $\Pi$ }
+	\begin{block}{Calculating the value of $\Pi$ from Area and radius/diameter}
+		Area = $\Pi$ * $radius^{2}$ \\
+		$\Pi$ = Area / $radius^{2}$ \\
+		As we need 4 in the numerator we may have to substitute radius with diameter.\\
+		$\Pi$ = Area / $(diameter/2)^{2}$ \\
+		$\Pi$ = 4 * Area / (diameter * diameter) \\
+		$\Pi$ = 4 * Area / diameter / diameter \\
+	\end{block}
+\end{frame}	
+
+\section{Inference}
+\begin{frame}
+	\frametitle{Inference}
+	\framesubtitle{What can we conclude from this?}
+	\begin{block}{Conclusion}
+		Variable \textcolor{red}{F} is the area of the circle used in the program \\
+		The Diameter of the circle is the variable \textcolor{red}{OO}
+	\end{block}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Learning}
+	\framesubtitle{What's new I have learned from this?}
+	\begin{block}{Learning something new}
+		Previously, I have tried to de-obfuscating PHP code (in which they used base64 encoding, rot 13 transformation etc) files during Capture The Flag contests. This is the first time I am hearing about C obfuscating. That was a nice learning experience!
+	\end{block}
+\end{frame}
+
+\frame{
+  	\vspace{2cm}
+	\begin{center}
+  		{\huge Thank you!}
+	\end{center}
+  	\vspace{1cm}
+  	\begin{flushright}
+        Seshagiri Prabhu \\
+    	\structure{\footnotesize{seshagiriprabhu@gmail.com} \\ AM.EN.P2CSN12028}
+  	\end{flushright}
+}
+
+\end{document}
