@@ -74,3 +74,6 @@ OBJECT/
 *.backup
 *.vrb
 *.tex~
+
+# Temporary directories
+temp/
