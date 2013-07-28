@@ -2,7 +2,7 @@
 
 Review the inventions from rural India described in the following pages:
 * <http://www.thebetterindia.com/topics/inventions/>
-* <www.rediff.com/business/slide-show/slide-show-1-amazing-innovations-from-rural-india.>
+* <http://www.rediff.com/business/slide-show/slide-show-1-amazing-innovations-from-rural-india>
 * Search for ``India's Rural Invention``. 
 
 From the above pages pick one invention and compile the following information for it. 
