@@ -1,5 +1,5 @@
 
-NAME= p2csn12028_seshagiri_prabhu
+NAME= p2csn12028_seshagiri_prabhu_A2
 
 all: $(NAME).pdf
 
