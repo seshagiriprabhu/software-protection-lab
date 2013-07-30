@@ -1,25 +1,20 @@
-# Make file
-CC=gcc
-CFLAG= -c -Wall
+# Makefile
+shell=/bin/sh
+CC=cc
+CFLAGS=-O
+CPP=/lib/cpp
 
-EXECS := circle
-PROG = circle.c
-OBJS := $(addprefix OBJECTS/, $(addsuffix .o, $(EXECS)))
+EXECS=circle circle32
 
-all 	:$(EXECS)
+all:${EXECS}
 
-OBJECTS	:
-		mkdir -p $@
+circle:circle.c
+	${CC} ${CFLAGS} $? -o $@
 
-$(OBJS)	:| OBJECTS
-
-$(EXECS):$(OBJS)
-		$(CC) $^ -o $@
-
-OBJECTS/circle.o	:$(PROG)
-		$(CC) $(CFLAG) $^ -o $@
+circle32:circle32.c
+	${CC} ${CFLAGS} $? -o $@
 
 clean	:
-		rm -rf $(EXECS) OBJECTS
+		rm -rf ${EXECS} *.o
 
 .PHONY	: clean all
