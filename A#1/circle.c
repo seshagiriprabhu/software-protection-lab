@@ -1,5 +1,5 @@
 #include <stdio.h>
-#define _ -F<00||--F-OO--;
+#define _ F-->00||-F-OO--;
 
 int F=00,OO=00;
 
