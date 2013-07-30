@@ -1,16 +1,22 @@
-/* Written by Seshagiri (aka Giri)
- * AM.EN.P2CSN12028
- * Amrita Center for Cyber Security
- * Amritapuri Campus */
+/* Copyright (c) 2013, Seshagiri Prabhu.
+ * All Rights Reserved.  Permission for personal, educational or non-profit use is
+ * granted provided this this copyright and notice are included in its entirety
+ * and remains unaltered.  All other uses must receive prior permission in writing
+ * from	Seshagiri Prabhu 
+ *
+ * Operating system used: Ubuntu 12.04.2 LTS x86
+ * gcc version 4.6.4 (Ubuntu/Linaro 4.6.4-1ubuntu1~12.04) 
+ *
+ * How to compile:
+ * $ cc -O circle32.c -o circle32 */
 
 #include <stdio.h>
 /* #define _ -F<00||--F-OO--;
- * define _ -a
- * 		-_
- * as "--a" and not "-(-a)" or some other tokenized form.  Some strictly
- * conforming ANSI C Preprocessors may object to this: for such
- * compilers, you can elide the nonstandard token-pasting requirement
- * by changing the #define line to: */
+ * FIX by Brian Westley for compilers which doesn't parse:
+ * define _ -a in '-_' as "--a" and not "-(-a)" or some other tokenized form. 
+ * Some strictly conforming ANSI C Preprocessors may object to this: for such
+ * compilers, you can elide the nonstandard token-pasting requirement by 
+ * changing the #define line to: */
 
 #define _ F-->00||-F-OO--; 
 
@@ -37,7 +43,7 @@ F_OO() {
 _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_ /* No of underscores: 32 */
 _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_ /* No of underscores: 32 */
 _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_ /* No of underscores: 32 */
-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_ /* No of underscores: 12 (Center of the circle lies on this line) */
+_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_ /* No of underscores: 32 */
 _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_ /* No of underscores: 32 */
 _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_ /* No of underscores: 32 */
 _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_ /* No of underscores: 32 */
